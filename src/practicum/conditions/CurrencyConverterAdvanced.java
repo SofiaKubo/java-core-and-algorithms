@@ -3,53 +3,67 @@ package practicum.conditions;
 import java.util.Scanner;
 
 public class CurrencyConverterAdvanced {
-  public static void main(String[] args) {
-    double rateUSD = 81.9;
-    double rateEUR = 87.7;
-    double rateCNY = 11.49;
+    private static class CurrencyOption {
+        private final double rate;
+        private final String currencyName;
 
-    System.out.println("Введите сумму рублей для конвертации:");
-    Scanner numberReader = new Scanner(System.in);
-    double roubles = numberReader.nextDouble();
-    if (roubles < 0) {
-      System.out.println("Ошибка: некорректные значения.");
-      System.out.println("Работа с программой завершена.");
-      numberReader.close();
-      return;
+        private CurrencyOption(double rate, String currencyName) {
+            this.rate = rate;
+            this.currencyName = currencyName;
+        }
     }
 
-    System.out.println("Введите номер валюты, в какую перевести рубли:");
-    System.out.println("1 – доллары;");
-    System.out.println("2 – евро;");
-    System.out.println("3 – юани;");
+    public static void main(String[] args) {
+        Scanner numberReader = new Scanner(System.in);
 
-    int command = numberReader.nextInt();
+        System.out.println("Введите сумму рублей для конвертации:");
+        double roubles = numberReader.nextDouble();
 
-    double selectedRate = 0;
-    String currencyName = "";
+        printMenu();
+        int command = numberReader.nextInt();
 
-    switch (command) {
-      case 1:
-        selectedRate = rateUSD;
-        currencyName = "долларах";
-        break;
-      case 2:
-        selectedRate = rateEUR;
-        currencyName = "евро";
-        break;
-      case 3:
-        selectedRate = rateCNY;
-        currencyName = "юанях";
-        break;
-      default:
-        System.out.println("Такой команды нет.");
-        return;
+        CurrencyOption option = resolveCurrencyOption(command);
+        if (option == null) {
+            System.out.println("Такой команды нет.");
+            System.out.println("Работа с программой завершена.");
+            numberReader.close();
+            return;
+        }
+
+        printConversion(roubles, option.rate, option.currencyName);
+        System.out.println("Работа с программой завершена.");
+        numberReader.close();
     }
 
-    double converted = roubles / selectedRate;
-    System.out.println("Было введено " + roubles + ", в " + currencyName + " это " + converted);
+    private static void printMenu() {
+        System.out.println("Введите номер валюты, в какую перевести рубли:");
+        System.out.println("1 – доллары;");
+        System.out.println("2 – евро;");
+        System.out.println("3 – юани;");
+    }
 
-    System.out.println("Работа с программой завершена.");
-    numberReader.close();
-  }
+    private static CurrencyOption resolveCurrencyOption(int command) {
+        switch (command) {
+            case 1:
+                return new CurrencyOption(81.9, "долларах");
+            case 2:
+                return new CurrencyOption(87.7, "евро");
+            case 3:
+                return new CurrencyOption(11.49, "юанях");
+            default:
+                return null;
+        }
+    }
+
+    private static void printConversion(double roubles, double rate, String currencyName) {
+        if (roubles < 0) {
+            System.out.println("Ошибка: некорректные значения.");
+            return;
+        }
+
+        double converted = roubles / rate;
+        System.out.println(
+            "Было введено " + roubles + ", в " + currencyName + " это " +
+                converted + ".");
+    }
 }
