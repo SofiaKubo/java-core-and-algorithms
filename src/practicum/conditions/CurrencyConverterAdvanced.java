@@ -11,6 +11,12 @@ public class CurrencyConverterAdvanced {
     System.out.println("Введите сумму рублей для конвертации:");
     Scanner numberReader = new Scanner(System.in);
     double roubles = numberReader.nextDouble();
+    if (roubles < 0) {
+      System.out.println("Ошибка: некорректные значения.");
+      System.out.println("Работа с программой завершена.");
+      numberReader.close();
+      return;
+    }
 
     System.out.println("Введите номер валюты, в какую перевести рубли:");
     System.out.println("1 – доллары;");
@@ -19,31 +25,31 @@ public class CurrencyConverterAdvanced {
 
     int command = numberReader.nextInt();
 
-    if (command == 1) {
-      double rubToUsd = roubles / rateUSD;
-      if (rubToUsd < 0) {
-        System.out.println("Ошибка: некорректные значения.");
-      } else {
-        System.out.println("Было введено " + roubles + ", в долларах это " + rubToUsd);
-      }
-    } else if (command == 2) {
-      double rubToEur = roubles / rateEUR;
-      if (rubToEur < 0) {
-        System.out.println("Ошибка: некорректные значения.");
-      } else {
-        System.out.println("Было введено " + roubles + ", в евро это " + rubToEur);
-      }
-    } else if (command == 3) {
-      double rubToCny = roubles / rateCNY;
-      if (rubToCny < 0) {
-        System.out.println("Ошибка: некорректные значения.");
-      } else {
-        System.out.println("Было введено " + roubles + ", в юанях это " + rubToCny);
-      }
-    } else {
-      System.out.println("Такой команды нет.");
+    double selectedRate = 0;
+    String currencyName = "";
+
+    switch (command) {
+      case 1:
+        selectedRate = rateUSD;
+        currencyName = "долларах";
+        break;
+      case 2:
+        selectedRate = rateEUR;
+        currencyName = "евро";
+        break;
+      case 3:
+        selectedRate = rateCNY;
+        currencyName = "юанях";
+        break;
+      default:
+        System.out.println("Такой команды нет.");
+        return;
     }
 
+    double converted = roubles / selectedRate;
+    System.out.println("Было введено " + roubles + ", в " + currencyName + " это " + converted);
+
     System.out.println("Работа с программой завершена.");
+    numberReader.close();
   }
 }
