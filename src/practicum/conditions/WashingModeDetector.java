@@ -3,25 +3,25 @@ package practicum.conditions;
 class WashingModeDetector {
     public static void main(String[] args) {
         int dirtyLevel = 3;
-        boolean isDelicate = false;
-        int clothesWeight = 4;
+        boolean isDelicate = true;
+        int clothesWeight = 6;
 
         String washingMode;
 
-        if (dirtyLevel <= 2) { // Проверьте уровень загрязнения
-            if (isDelicate) { // В случае, если нужна деликатная стирка
-                washingMode = "Деликатный"; // Режим "Деликатный"
+        if (dirtyLevel <= 2) {
+            if (isDelicate) {
+                washingMode = "Деликатный";
             } else {
-                washingMode = "Стандартный"; // Иначе "Стандартный"
+                washingMode = "Стандартный";
             }
         } else {
-            if (clothesWeight > 5) { // Если вещей больше 5 килограмм
-                washingMode = "Большая загрузка"; // Режим "Большая загрузка"
+            if (clothesWeight > 5) {
+                washingMode = "Большая загрузка";
             } else {
-                washingMode = "Сильные загрязнения";// Иначе "Сильные загрязнения"
+                washingMode = "Сильные загрязнения";
             }
         }
         System.out.println("Выбран режим стирки: " + washingMode +
-                "."); // Выведите информацию о выбранном режиме
+                ".");
     }
 }
