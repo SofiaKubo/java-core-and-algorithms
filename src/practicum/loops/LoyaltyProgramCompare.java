@@ -2,34 +2,33 @@ package practicum.loops;
 
 public class LoyaltyProgramCompare {
     public static void main(String[] args) {
-        int targetAmount = 40000; // сколько нужно накопить
-        int day = 1; // переменная для подсчёта количества дней
-        int dailyIncome = 1; // переменная, показывающая ежедневные поступления
+        int targetAmount = 40000;
+        simulateTariff("I", targetAmount, 1, 0, true);
+        simulateTariff("II", targetAmount, 100, 100, false);
+    }
 
-        // условие для цикла, переменную для накопления результата назовите totalAmount
-        for (int totalAmount = dailyIncome;
-             totalAmount <= targetAmount; totalAmount += dailyIncome) {
+    private static void simulateTariff(
+            String tariffName, int targetAmount, int initialIncome, int incomeStep, boolean isDoubling) {
+        int day = 1;
+        int dailyIncome = initialIncome;
+        int totalAmount = 0;
+
+        while (totalAmount < targetAmount) {
+            totalAmount += dailyIncome;
             System.out.println("День " + day + ". На счету " + totalAmount);
-            dailyIncome *= 2;
+            if (totalAmount >= targetAmount) {
+                break;
+            }
+
+            if (isDoubling) {
+                dailyIncome *= 2;
+            } else {
+                dailyIncome += incomeStep;
+            }
             day++;
         }
 
-        System.out.println("В варианте I на " + day +
-            "-й день будет достигнута нужная сумма.");
-
-        // не забудьте задать значения переменных day и dailyIncome,
-        // соответственно условиям второго тарифа
-        int daySecond = 1;
-        int dailyIncomeSecond = 100;
-
-        for (int totalAmount = dailyIncomeSecond;
-             totalAmount <= targetAmount; totalAmount += dailyIncomeSecond) {
-            System.out.println(
-                "День " + daySecond + ". На счету " + totalAmount);
-            dailyIncomeSecond += 100;
-            daySecond++;
-        }
-        System.out.println("В варианте II на " + daySecond +
-            "-й день будет достигнута нужная сумма.");
+        System.out.println("В варианте " + tariffName + " на " + day
+                + "-й день будет достигнута нужная сумма.");
     }
 }
