@@ -1,4 +1,4 @@
-package practicum.basics;
+package basics;
 
 public class MegabytesComparison {
   public static void main(String[] args) {

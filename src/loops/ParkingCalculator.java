@@ -1,4 +1,4 @@
-package practicum.loops;
+package loops;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

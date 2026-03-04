@@ -1,4 +1,4 @@
-package practicum.conditions;
+package conditions;
 
 public class WeatherAlert {
   private static final String RAIN = "Дождь";

@@ -1,4 +1,4 @@
-package practicum.conditions;
+package conditions;
 
 import java.util.Scanner;
 

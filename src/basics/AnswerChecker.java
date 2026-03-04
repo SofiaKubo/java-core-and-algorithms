@@ -1,4 +1,4 @@
-package practicum.basics;
+package basics;
 
 public class AnswerChecker {
   public static void main(String[] args) {

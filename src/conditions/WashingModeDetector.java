@@ -1,4 +1,4 @@
-package practicum.conditions;
+package conditions;
 
 class WashingModeDetector {
   public static void main(String[] args) {

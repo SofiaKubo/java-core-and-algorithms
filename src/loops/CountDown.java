@@ -1,4 +1,4 @@
-package practicum.loops;
+package loops;
 
 public class CountDown {
   public static void main(String[] args) {

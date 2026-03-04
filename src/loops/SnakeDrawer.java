@@ -1,4 +1,4 @@
-package practicum.loops;
+package loops;
 
 public class SnakeDrawer {
   public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package practicum.conditions;
+package conditions;
 
 public class BreakfastRecommender {
   public static void main(String[] args) {

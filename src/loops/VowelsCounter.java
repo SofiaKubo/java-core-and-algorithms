@@ -1,4 +1,4 @@
-package practicum.loops;
+package loops;
 
 import java.util.Locale;
 import java.util.Scanner;
