@@ -15,6 +15,7 @@ public class WeatherValidator {
         scanner.close();
 
         int criteriaCount = countSatisfiedCriteria(temperature, windSpeed, rain);
+
         if (criteriaCount == 3) {
             System.out.println("Идеальная погода для пикника!");
         } else if (criteriaCount == 2) {
