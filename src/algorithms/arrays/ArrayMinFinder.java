@@ -5,20 +5,23 @@ import java.util.Scanner;
 public class ArrayMinFinder {
 
     public static void main(String[] args) {
-        Scanner console = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
 
-        int n = console.nextInt();
+        int n = scanner.nextInt();
+        if (n <= 0) return;
+
         int[] array = new int[n];
 
         for (int i = 0; i < array.length; i++) {
-            array[i] = console.nextInt();
+            array[i] = scanner.nextInt();
         }
 
         int min = array[0];
 
-        for (int i = 0; i < array.length; i++) {
-            if (array[i] < min)
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] < min) {
                 min = array[i];
+            }
         }
         System.out.println(min);
     }
