@@ -10,18 +10,23 @@ public class Reverse {
         if (n <= 0) return;
 
         int[] arr = new int[n];
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i < arr.length; i++) {
             arr[i] = console.nextInt();
         }
 
-        if (n % 2 != 0) {
-            for (int i = 0; i < n; i++) {
-                System.out.println(arr[i]);
-            }
+        int start, end, step;
+
+        if (n % 2 == 0) {
+            start = n - 1;
+            end = -1;
+            step = -1;
         } else {
-            for (int i = n - 1; i >= 0; i--) {
-                System.out.println(arr[i]);
-            }
+            start = 0;
+            end = n;
+            step = 1;
+        }
+        for (int i = start; i != end; i += step) {
+            System.out.println(arr[i]);
         }
     }
 }
