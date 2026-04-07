@@ -12,28 +12,36 @@ public class StringArrayDuplicateRemover {
             strings[i] = scanner.nextLine();
         }
 
-        for (int i = 0; i < strings.length; i++) {
-            if (strings[i] == null) {
+        removeDuplicates(strings);
+        print(strings);
+
+    }
+
+    public static void removeDuplicates(String[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (arr[i] == null) {
                 continue;
             }
             boolean hasDuplicate = false;
 
-            for (int j = i + 1; j < strings.length; j++) {
-                if (strings[j] != null && strings[i].equals(strings[j])) {
-                    strings[j] = null;
+            for (int j = i + 1; j < arr.length; j++) {
+                if (arr[j] != null && arr[i].equals(arr[j])) {
+                    arr[j] = null;
                     hasDuplicate = true;
                 }
             }
             if (hasDuplicate) {
-                strings[i] = null;
+                arr[i] = null;
             }
         }
+    }
 
-        for (int i = 0; i < strings.length; i++) {
-            if (i < strings.length - 1) {
-                System.out.print(strings[i] + ", ");
+    public static void print(String[] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            if (i < arr.length - 1) {
+                System.out.print(arr[i] + ", ");
             } else {
-                System.out.print(strings[i]);
+                System.out.print(arr[i]);
             }
         }
     }
