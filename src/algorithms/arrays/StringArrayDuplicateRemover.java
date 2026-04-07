@@ -19,19 +19,18 @@ public class StringArrayDuplicateRemover {
 
     public static void removeDuplicates(String[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == null) {
-                continue;
-            }
-            boolean hasDuplicate = false;
+            if (arr[i] != null) {
+                boolean hasDuplicate = false;
 
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] != null && arr[i].equals(arr[j])) {
-                    arr[j] = null;
-                    hasDuplicate = true;
+                for (int j = i + 1; j < arr.length; j++) {
+                    if (arr[j] != null && arr[i].equals(arr[j])) {
+                        arr[j] = null;
+                        hasDuplicate = true;
+                    }
                 }
-            }
-            if (hasDuplicate) {
-                arr[i] = null;
+                if (hasDuplicate) {
+                    arr[i] = null;
+                }
             }
         }
     }
