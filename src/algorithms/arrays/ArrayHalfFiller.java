@@ -8,7 +8,8 @@ public class ArrayHalfFiller {
     public static int valueEnd = 13;
 
     public static void main(String[] args) {
-        int middle = (array.length + 1) / 2;
+        int middle =
+            array.length % 2 == 0 ? array.length / 2 : array.length / 2 + 1;
 
         Arrays.fill(array, 0, middle, valueStart);
         Arrays.fill(array, middle, array.length, valueEnd);
