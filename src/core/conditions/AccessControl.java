@@ -1,4 +1,4 @@
-package conditions;
+package core.conditions;
 
 public class AccessControl {
   public static void main(String[] args) {

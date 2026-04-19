@@ -1,4 +1,4 @@
-package conditions;
+package core.conditions;
 
 class WashingModeDetector {
   public static void main(String[] args) {

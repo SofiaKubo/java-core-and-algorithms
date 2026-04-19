@@ -1,4 +1,4 @@
-package conditions;
+package core.conditions;
 
 public class WeatherAlert {
   private static final String RAIN = "Дождь";

@@ -1,4 +1,4 @@
-package loops;
+package core.loops;
 
 import java.util.Locale;
 import java.util.Scanner;

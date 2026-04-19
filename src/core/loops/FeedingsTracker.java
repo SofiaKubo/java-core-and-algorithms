@@ -1,4 +1,4 @@
-package loops;
+package core.loops;
 
 public class FeedingsTracker {
   public static void main(String[] args) {

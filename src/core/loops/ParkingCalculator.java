@@ -1,4 +1,4 @@
-package loops;
+package core.loops;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;

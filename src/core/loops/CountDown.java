@@ -1,4 +1,4 @@
-package loops;
+package core.loops;
 
 public class CountDown {
   public static void main(String[] args) {

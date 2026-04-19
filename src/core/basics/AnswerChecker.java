@@ -1,4 +1,4 @@
-package basics;
+package core.basics;
 
 public class AnswerChecker {
   public static void main(String[] args) {

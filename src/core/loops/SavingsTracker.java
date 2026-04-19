@@ -1,4 +1,4 @@
-package loops;
+package core.loops;
 
 public class SavingsTracker {
   public static void main(String[] args) {
