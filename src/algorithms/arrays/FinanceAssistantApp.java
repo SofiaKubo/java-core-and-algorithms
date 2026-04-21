@@ -16,11 +16,11 @@ public class FinanceAssistantApp {
         System.out.println("Сколько дней до зарплаты?");
         int daysBeforeSalary = scanner.nextInt();
 
-        while (true) { // место для условия цикла
+        while (true) {
             System.out.println("Что вы хотите сделать? ");
             System.out.println("1 - Конвертировать валюту");
             System.out.println("2 - Получить совет");
-            System.out.println("0 - Выход"); // Новый пункт меню, осталось только реализовать логику
+            System.out.println("0 - Выход");
 
             int command = scanner.nextInt();
 
@@ -66,7 +66,7 @@ public class FinanceAssistantApp {
                 }
             } else if (command == 0) {
                 System.out.println("Выход");
-                break; //логика пункта "Выход"
+                break;
             } else {
                 System.out.println("Извините, такой команды пока нет.");
             }
