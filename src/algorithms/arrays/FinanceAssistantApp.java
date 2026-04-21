@@ -3,7 +3,6 @@ package algorithms.arrays;
 import java.util.Scanner;
 
 public class FinanceAssistantApp {
-
     public static void main(String[] args) {
         double rateUSD = 94.8;
         double rateEUR = 103.8;
@@ -17,49 +16,60 @@ public class FinanceAssistantApp {
         System.out.println("Сколько дней до зарплаты?");
         int daysBeforeSalary = scanner.nextInt();
 
-        System.out.println("Введите команду. Доступные команды: convert и advice.");
-        String command = scanner.next();
+        while (true) { // место для условия цикла
+            System.out.println("Что вы хотите сделать? ");
+            System.out.println("1 - Конвертировать валюту");
+            System.out.println("2 - Получить совет");
+            System.out.println("0 - Выход"); // Новый пункт меню, осталось только реализовать логику
 
-        if (command.equals("convert")){
-            System.out.println("В какую валюту хотите конвертировать рубли? Доступные варианты: USD, EUR, CNY.");
-            String currency = scanner.next();
+            int command = scanner.nextInt();
 
-            if (currency.equals("USD")){
-                System.out.println("Ваши сбережения в долларах: " + (moneyBeforeSalary / rateUSD));
-            } else if (currency.equals("EUR")){
-                System.out.println("Ваши сбережения в евро: " + (moneyBeforeSalary / rateEUR));
-            } else if (currency.equals("CNY")){
-                System.out.println("Ваши сбережения в юанях: " + (moneyBeforeSalary / rateCNY));
-            }  else {
-                System.out.println("Введена неизвестная валюта.");
-            }
+            if (command == 1) {
+                System.out.println("В какую валюту хотите конвертировать? Доступные варианты: 1 - USD, 2 - EUR или 3 - CNY.");
+                int currency = scanner.nextInt();
 
-
-        } else if (command.equals("advice")){
-            if (moneyBeforeSalary < 3000) {
-                System.out.println("Сегодня лучше поесть дома. Экономьте, и вы дотянете до зарплаты!");
-            } else if (moneyBeforeSalary < 10000) {
-                if (daysBeforeSalary < 10) {
-                    System.out.println("Можно заказать пиццу!");
+                if (currency == 1) {
+                    System.out.println("Ваши сбережения в долларах: " +
+                        moneyBeforeSalary / rateUSD);
+                } else if (currency == 2) {
+                    System.out.println(
+                        "Ваши сбережения в евро: " +
+                            moneyBeforeSalary / rateEUR);
+                } else if (currency == 3) {
+                    System.out.println(
+                        "Ваши сбережения в юанях: " +
+                            moneyBeforeSalary / rateCNY);
                 } else {
+                    System.out.println("Введена неизвестная валюта.");
+                }
+            } else if (command == 2) {
+                if (moneyBeforeSalary < 3000) {
                     System.out.println("Сегодня лучше поесть дома. Экономьте, и вы дотянете до зарплаты!");
-                }
-            } else if (moneyBeforeSalary < 30000) {
-                if (daysBeforeSalary < 10) {
-                    System.out.println("Неплохо! Сегодня можно поужинать в кафе.");
+                } else if (moneyBeforeSalary < 10000) {
+                    if (daysBeforeSalary < 10) {
+                        System.out.println("Можно заказать пиццу!");
+                    } else {
+                        System.out.println("Сегодня лучше поесть дома. Экономьте, и вы дотянете до зарплаты!");
+                    }
+                } else if (moneyBeforeSalary < 30000) {
+                    if (daysBeforeSalary < 10) {
+                        System.out.println("Неплохо! Сегодня можно поужинать в кафе. :)");
+                    } else {
+                        System.out.println("Можно заказать пиццу!");
+                    }
                 } else {
-                    System.out.println("Можно заказать пиццу!");
+                    if (daysBeforeSalary < 10) {
+                        System.out.println("Отлично! Можно сходить в ресторан.");
+                    } else {
+                        System.out.println("Неплохо! Сегодня можно поужинать в кафе. :)");
+                    }
                 }
+            } else if (command == 0) {
+                System.out.println("Выход");
+                break; //логика пункта "Выход"
             } else {
-                if (daysBeforeSalary < 10) {
-                    System.out.println("Отлично! Можно сходить в ресторан.");
-                } else {
-                    System.out.println("Неплохо! Сегодня можно поужинать в кафе.");
-                }
+                System.out.println("Извините, такой команды пока нет.");
             }
-
-        } else {
-            System.out.println("Извините, такой команды пока нет.");
         }
     }
 }
