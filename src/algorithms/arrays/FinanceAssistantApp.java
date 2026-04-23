@@ -23,6 +23,7 @@ public class FinanceAssistantApp {
             System.out.println("1 - Конвертировать валюту");
             System.out.println("2 - Получить совет");
             System.out.println("3 — Ввести трату");
+            System.out.println("4 - Показать траты за неделю");
             System.out.println("0 - Выход");
 
             int command = scanner.nextInt();
@@ -74,10 +75,18 @@ public class FinanceAssistantApp {
                 double expense = scanner.nextDouble();
                 moneyBeforeSalary -= expense;
                 expenses[day - 1] = expenses[day - 1] + expense;
-                System.out.println("Значение сохранено! Ваш текущий баланс в рублях: " + moneyBeforeSalary);
+                System.out.println(
+                    "Значение сохранено! Ваш текущий баланс в рублях: " +
+                        moneyBeforeSalary);
 
                 if (moneyBeforeSalary < 1000) {
                     System.out.println("На вашем счету осталось совсем немного. Стоит начать экономить!");
+                }
+            } else if (command == 4) {
+                for (int i = 0; i < expenses.length; i++) {
+                    System.out.println(
+                        "День " + (i + 1) + ". Потрачено " + expenses[i] +
+                            " рублей.");
                 }
             } else if (command == 0) {
                 System.out.println("Выход");
