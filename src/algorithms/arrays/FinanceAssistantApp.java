@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class FinanceAssistantApp {
     public static void main(String[] args) {
+        double[] expenses = new double[7];
+
         double rateUSD = 94.8;
         double rateEUR = 103.8;
         double rateCNY = 13.1;
@@ -20,6 +22,7 @@ public class FinanceAssistantApp {
             System.out.println("Что вы хотите сделать? ");
             System.out.println("1 - Конвертировать валюту");
             System.out.println("2 - Получить совет");
+            System.out.println("3 — Ввести трату");
             System.out.println("0 - Выход");
 
             int command = scanner.nextInt();
@@ -64,6 +67,13 @@ public class FinanceAssistantApp {
                         System.out.println("Неплохо! Сегодня можно поужинать в кафе. :)");
                     }
                 }
+            } else if (command == 3) {
+                System.out.println("За какой день вы хотите ввести трату: 1-ПН, 2-ВТ, 3-СР, 4-ЧТ, 5-ПТ, 6-СБ, 7-ВС?");
+                int day = scanner.nextInt();
+                System.out.println("Введите размер траты:");
+                double expense = scanner.nextDouble();
+                expenses[day - 1] = expenses[day - 1] + expense;
+                System.out.println("Значение сохранено!");
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
