@@ -72,8 +72,13 @@ public class FinanceAssistantApp {
                 int day = scanner.nextInt();
                 System.out.println("Введите размер траты:");
                 double expense = scanner.nextDouble();
+                moneyBeforeSalary -= expense;
                 expenses[day - 1] = expenses[day - 1] + expense;
-                System.out.println("Значение сохранено!");
+                System.out.println("Значение сохранено! Ваш текущий баланс в рублях: " + moneyBeforeSalary);
+
+                if (moneyBeforeSalary < 1000) {
+                    System.out.println("На вашем счету осталось совсем немного. Стоит начать экономить!");
+                }
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
