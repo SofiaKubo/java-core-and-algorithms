@@ -17,40 +17,40 @@ public class TravelRouteAdvisor {
                 System.out.println("Некорректный номер месяца. Введите ещё раз.");
             }
         }
-        String season = "";
-        if (monthNumber < 3) {
-            season = "Зима";
-        } else if (monthNumber <= 5) {
+
+        String season = "Зима";
+
+        if (monthNumber >= 3 && monthNumber <= 5) {
             season = "Весна";
-        } else if (monthNumber <= 8) {
+        } else if (monthNumber > 5 && monthNumber <= 8) {
             season = "Лето";
-        } else if (monthNumber <= 11) {
+        } else if (monthNumber > 8 && monthNumber <= 11) {
             season = "Осень";
-        } else {
-            season = "Зима";
         }
 
-        if (season.equals("Лето")) {
-            System.out.println("Летом лучше остаться в Москве.");
-        } else {
-            System.out.println("Укажите стоимость прямых билетов из Москвы в Париж:");
-            int ticketMoscowParis = scanner.nextInt();
-            System.out.println("Укажите стоимость билетов из Москвы в Париж с пересадкой в Лондоне:");
-            int ticketMoscowLondonParis = scanner.nextInt();
-            System.out.println("У вас есть британская виза?");
-            System.out.println("1 - да, виза есть");
-            System.out.println("0 - визы нет");
-            int britainVisa = scanner.nextInt();
+        if (season.equals("Лето") || season.equals("Зима")) {
+            System.out.println("В этом сезоне лучше остаться в Москве.");
+            return;
+        }
 
-            if (!(ticketMoscowLondonParis > ticketMoscowParis)) {
-                if (britainVisa == 1) {
-                    System.out.println("Летим через Лондон!");
-                } else {
-                    System.out.println("Летим напрямую в Париж!");
-                }
-            } else {
-                System.out.println("Летим напрямую в Париж!");
-            }
+
+        System.out.println("Укажите стоимость прямых билетов из Москвы в Париж:");
+        int ticketMoscowParis = scanner.nextInt();
+        System.out.println("Укажите стоимость билетов из Москвы в Париж с пересадкой в Лондоне:");
+        int ticketMoscowLondonParis = scanner.nextInt();
+        System.out.println("У вас есть британская виза?");
+        System.out.println("1 - да, виза есть");
+        System.out.println("0 - визы нет");
+        int britainVisa = scanner.nextInt();
+
+        boolean directTicketsCheaper =
+            ticketMoscowLondonParis >= ticketMoscowParis;
+        boolean hasBritainVisa = britainVisa == 1;
+
+        if ((!directTicketsCheaper) && (hasBritainVisa)) {
+            System.out.println("Летим через Лондон!");
+        } else {
+            System.out.println("Летим через Париж!");
         }
     }
 }
