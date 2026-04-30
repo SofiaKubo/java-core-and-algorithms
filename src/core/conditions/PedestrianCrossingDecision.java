@@ -12,18 +12,17 @@ public class PedestrianCrossingDecision {
 
         System.out.println("Вы находитесь около пешеходного перехода (да/нет)?");
         String onCrosswalk = scanner.nextLine();
-        boolean isOnCrosswalk = onCrosswalk.equals("да"); // проверьте, ответил ли пользователь утвердительно
+        boolean isOnCrosswalk = onCrosswalk.equals("да");
 
-        if (isOnCrosswalk) { // Если пешеход находится на пешеходном переходе:
+        if (isOnCrosswalk) {
             System.out.println("Горит ли зелёный сигнал светофора (да/нет)?");
             String trafficLightGreen = scanner.nextLine();
             isTrafficLightGreen = trafficLightGreen.equals("да");
 
-            if (!isTrafficLightGreen) { // Если светофор красный:
+            if (!isTrafficLightGreen) {
                 System.out.println("Не переходите дорогу на красный свет светофора!");
             }
         } else {
-            // Если к пешеходу приближается транспортное средство:
             System.out.println("Видите ли вы приближающиеся автомобили (да/нет)?");
             String vehicleApproaching = scanner.nextLine();
             isVehicleApproaching = vehicleApproaching.equals("да");
@@ -34,7 +33,7 @@ public class PedestrianCrossingDecision {
 
         boolean isSafePlace = false;
 
-        if (!isOnCrosswalk && !isVehicleApproaching) {  // Проверка на перебежку дороги в небезопасном месте:
+        if (!isOnCrosswalk && !isVehicleApproaching) {
             System.out.println("Находится ли вблизи вас поворот (П), остановка (А), перекрёсток (Х) или нет?");
             String unsafePlaceType = scanner.nextLine();
             switch (unsafePlaceType) {
