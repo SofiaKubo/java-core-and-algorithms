@@ -89,17 +89,16 @@ public class FinanceAssistantApp {
                         "День " + (i + 1) + ". Потрачено " + expenses[i] +
                             " рублей.");
                 }
-            } else if (command == 5) { 
-
+            } else if (command == 5) {
                 double maxExpense = 0;
-                for (int i = 0; i < expenses.length; i++) { // проходим циклом по всему массиву трат
-                    if (expenses[i] > maxExpense) { // сравниваем, больше ли текущий элемент массива значения maxExpense
-                        // если условие верно, то записываем в maxExpense значение текущего элемента массива
+                for (int i = 0; i < expenses.length; i++) {
+                    if (expenses[i] > maxExpense) {
                         maxExpense = expenses[i];
                     }
                 }
-                // печатаем максимум расходов:
-                System.out.println("Самая большая сумма расходов на этой неделе составила " + maxExpense + " руб.");
+                System.out.println(
+                    "Самая большая сумма расходов на этой неделе составила " +
+                        maxExpense + " руб.");
             } else if (command == 0) {
                 System.out.println("Выход");
                 break;
