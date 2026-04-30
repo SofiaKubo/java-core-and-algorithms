@@ -26,14 +26,25 @@ public class ShoppingListApp {
                     System.out.println("Извините, список полон!");
                 } else {
                     System.out.println("Введите название товара:");
-                    String product = scanner.next();
-                    shoppingList[productCount] = product;
+                    String productName = scanner.next();
 
-                    System.out.println("Товар " + product +
-                        " добавлен в список под номером " + (productCount + 1));
-                    productCount++;
+                    boolean productAlreadyExist = false;
+                    for (int i = 0; i < (productCount); i++) {
+                        if (shoppingList[i].equals(productName)) {
+                            productAlreadyExist = true;
+                            break;
+                        }
+                    }
+                    if (productAlreadyExist) {
+                        System.out.println("Такой товар уже есть в списке!");
+                    } else {
+                        shoppingList[productCount] = productName;
+                        System.out.println("Товар " + productName +
+                            " добавлен в список под номером " +
+                            (productCount + 1));
+                        productCount++;
+                    }
                 }
-
             } else if (actionNumber == 2) {
                 if (productCount > 0) {
                     for (int i = 0; i < (productCount); i++) {
@@ -55,4 +66,3 @@ public class ShoppingListApp {
         }
     }
 }
-
