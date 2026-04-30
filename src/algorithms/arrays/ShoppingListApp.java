@@ -35,9 +35,18 @@ public class ShoppingListApp {
                 }
 
             } else if (actionNumber == 2) {
-
+                if (productCount > 0) {
+                    for (int i = 0; i < (productCount); i++) {
+                        System.out.println((i + 1) + ". " +
+                            shoppingList[i]);
+                    }
+                }
             } else if (actionNumber == 3) {
-
+                for (int i = 0; i < productCount; i++) {
+                    shoppingList[i] = null;
+                }
+                productCount = 0;
+                System.out.println("Список очищен!");
             } else if (actionNumber == 4) {
                 break;
             } else {
@@ -46,3 +55,4 @@ public class ShoppingListApp {
         }
     }
 }
+
