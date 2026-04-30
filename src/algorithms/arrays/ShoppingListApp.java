@@ -7,7 +7,8 @@ public class ShoppingListApp {
 
         System.out.println("Вас приветствует список покупок!");
 
-        String[] shoppingList = new String[8];
+        int currentListSize = 8;
+        String[] shoppingList = new String[currentListSize];
         int productCount = 0;
 
         Scanner scanner = new Scanner(System.in);
@@ -22,28 +23,33 @@ public class ShoppingListApp {
             int actionNumber = scanner.nextInt();
 
             if (actionNumber == 1) {
-                if (productCount >= 8) {
-                    System.out.println("Извините, список полон!");
-                } else {
-                    System.out.println("Введите название товара:");
-                    String productName = scanner.next();
+                if (productCount == shoppingList.length) {
+                    int newListSize = currentListSize * 2;
+                    String[] newShoppingList = new String[newListSize];
+                    for (int i = 0; i < shoppingList.length; i++) {
+                        newShoppingList[i] = shoppingList[i];
+                    }
+                    shoppingList = newShoppingList;
+                    currentListSize = newListSize;
+                }
+                System.out.println("Введите название товара:");
+                String productName = scanner.next();
 
-                    boolean productAlreadyExist = false;
-                    for (int i = 0; i < (productCount); i++) {
-                        if (shoppingList[i].equals(productName)) {
-                            productAlreadyExist = true;
-                            break;
-                        }
+                boolean productAlreadyExist = false;
+                for (int i = 0; i < (productCount); i++) {
+                    if (shoppingList[i].equals(productName)) {
+                        productAlreadyExist = true;
+                        break;
                     }
-                    if (productAlreadyExist) {
-                        System.out.println("Такой товар уже есть в списке!");
-                    } else {
-                        shoppingList[productCount] = productName;
-                        System.out.println("Товар " + productName +
-                            " добавлен в список под номером " +
-                            (productCount + 1));
-                        productCount++;
-                    }
+                }
+                if (productAlreadyExist) {
+                    System.out.println("Такой товар уже есть в списке!");
+                } else {
+                    shoppingList[productCount] = productName;
+                    System.out.println("Товар " + productName +
+                        " добавлен в список под номером " +
+                        (productCount + 1));
+                    productCount++;
                 }
             } else if (actionNumber == 2) {
                 if (productCount > 0) {
