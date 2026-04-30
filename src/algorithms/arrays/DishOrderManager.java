@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class DishOrderManager {
     public static void main(String[] args) {
-        String[] dishes = {"Ризотто", "Тартар", "Шурпа", "Панна-котта", "Сашими"}; // Массив
+        String[] dishes = {"Ризотто", "Тартар", "Шурпа", "Панна-котта", "Сашими"};
         System.out.println("Вы продегустировали пять блюд.");
 
         Scanner scanner = new Scanner(System.in);
