@@ -17,20 +17,21 @@ public class GreetingRobotApp {
     public static void sayHelloByTime() {
         System.out.println("Который час?");
         int currentHour = scanner.nextInt();
-
-        if (currentHour >= 22 || currentHour < 6) {
+        if (currentHour < 6) {
             System.out.println("Доброй ночи!");
-        } else if (currentHour >= 6 && currentHour < 12) {
+        } else if (currentHour > 22) {
+            System.out.println("Доброй ночи!");
+        } else if (currentHour < 12) {
             System.out.println("Доброе утро!");
-        } else if (currentHour >= 12 && currentHour < 18) {
+        } else if (currentHour < 18) {
             System.out.println("Добрый день!");
-        } else if (currentHour >= 18 && currentHour < 22) {
+        } else {
             System.out.println("Добрый вечер!");
         }
-
     }
 
-    public static void printSuccess() {
-        System.out.println("У вас уже неплохо получается программировать!");
-    }
+
+public static void printSuccess() {
+    System.out.println("У вас уже неплохо получается программировать!");
+}
 }
