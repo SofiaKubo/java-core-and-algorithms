@@ -6,12 +6,31 @@ public class GreetingRobotApp {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
+        System.out.println("Робот-помощник v2.0.");
+        sayHello();
+        sayHelloByTime();
+        welcomeUserByName();
+        printSuccess();
     }
 
     public static void welcomeUserByName() {
         System.out.println("Как вас зовут?");
         String name = scanner.next();
-        System.out.println("Рад познакомиться, " + name + "!");
+        printCity();
+        String city = scanner.next();
+        System.out.println("Рад познакомиться, " + name + " из " + city + "!");
+    }
+
+    public static void printSuccess() {
+        System.out.println("У вас уже неплохо получается программировать!");
+    }
+
+    public static void sayHello() {
+        System.out.println("Привет!");
+    }
+
+    public static void printCity() {
+        System.out.println("Из какого вы города?");
     }
 
     public static void sayHelloByTime() {
@@ -29,9 +48,4 @@ public class GreetingRobotApp {
             System.out.println("Добрый вечер!");
         }
     }
-
-
-public static void printSuccess() {
-    System.out.println("У вас уже неплохо получается программировать!");
-}
 }
