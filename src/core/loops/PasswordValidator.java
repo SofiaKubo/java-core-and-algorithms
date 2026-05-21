@@ -27,9 +27,15 @@ public class PasswordValidator {
     scanner.close();
 
     int criteriaCount = 0;
-    if (hasDigit) criteriaCount++;
-    if (hasUpper) criteriaCount++;
-    if (hasLower) criteriaCount++;
+    if (hasDigit) {
+      criteriaCount++;
+    }
+    if (hasUpper) {
+      criteriaCount++;
+    }
+    if (hasLower) {
+      criteriaCount++;
+    }
 
     if (criteriaCount == 3 && password.length() >= 8) {
       System.out.println("Сильный пароль");
