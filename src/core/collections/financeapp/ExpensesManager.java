@@ -3,7 +3,7 @@ package core.collections.financeapp;
 import java.util.ArrayList;
 
 public class ExpensesManager {
-    ArrayList<Double> expenses;
+    ArrayList<Expense> expenses;
 
     ExpensesManager() {
         expenses = new ArrayList<>();
@@ -11,7 +11,7 @@ public class ExpensesManager {
 
     double saveExpense(double moneyBeforeSalary, double expense) {
         moneyBeforeSalary = moneyBeforeSalary - expense;
-        expenses.add(expense);
+        expenses.add(new Expense(expense));
         System.out.println("Значение сохранено! Ваш текущий баланс в рублях: " +
             moneyBeforeSalary);
         if (moneyBeforeSalary < 1000) {
@@ -22,19 +22,44 @@ public class ExpensesManager {
 
     void printAllExpenses() {
         for (int i = 0; i < expenses.size(); i++) {
+            Expense exp = expenses.get(i);
             System.out.println(
-                "Трата № " + (i + 1) + ". Потрачено " + expenses.get(i) +
-                    " рублей");
+                "Трата № " + (i + 1) + ". Потрачено " + exp.getValue() +
+                    " рублей, код транзакции: " + exp.getTransaction());
         }
     }
 
     double findMaxExpense() {
         double maxExpense = 0;
-        for (Double expense : expenses) {
-            if (expense > maxExpense) {
-                maxExpense = expense;
+        for (Expense exp : expenses) {
+            if (exp.getValue() > maxExpense) {
+                maxExpense = exp.getValue();
             }
         }
         return maxExpense;
+    }
+
+    void removeAllExpenses() {
+        expenses.clear();
+        System.out.println("Список трат пуст.");
+    }
+
+    void removeExpense(int transaction) {
+        if (expenses.isEmpty()) {
+            System.out.println("Список трат пуст.");
+            return;
+        }
+
+        for (int i = 0; i < expenses.size(); i++) {
+            Expense exp = expenses.get(i);
+
+            if (exp.getTransaction() == transaction) {
+                expenses.remove(i);
+                System.out.println("Трата удалена!");
+                return;
+            }
+        }
+
+        System.out.println("Такой траты нет.");
     }
 }
