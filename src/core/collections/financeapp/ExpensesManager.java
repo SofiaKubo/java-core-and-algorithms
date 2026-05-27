@@ -10,17 +10,17 @@ public class ExpensesManager {
         expensesByCategories = new HashMap<>();
     }
 
-    double saveExpense(double moneyBeforeSalary, double expense, String category) {
+    double saveExpense(double moneyBeforeSalary, String category, double expense) {
         moneyBeforeSalary = moneyBeforeSalary - expense;
         System.out.println("Значение сохранено! Ваш текущий баланс в рублях: " +
             moneyBeforeSalary);
         if (expensesByCategories.containsKey(category)) {
-            ArrayList<Double> listOfExpenses = expensesByCategories.get(category);
-            listOfExpenses.add(expense);
+            ArrayList<Double> expenses = expensesByCategories.get(category);
+            expenses.add(expense);
         } else {
-            ArrayList<Double> listOfExpenses = new ArrayList<>();
-            listOfExpenses.add(expense);
-            expensesByCategories.put(category, listOfExpenses);
+            ArrayList<Double> expenses = new ArrayList<>();
+            expenses.add(expense);
+            expensesByCategories.put(category, expenses);
         }
         if (moneyBeforeSalary < 1000) {
             System.out.println("На вашем счету осталось совсем немного. Стоит начать экономить!");
@@ -28,12 +28,11 @@ public class ExpensesManager {
         return moneyBeforeSalary;
     }
 
-
     void printAllExpensesByCategories() {
         for (String category : expensesByCategories.keySet()) {
             System.out.println(category);
-
-            for (double expense : expensesByCategories.get(category)) {
+            ArrayList<Double> expenses = expensesByCategories.get(category);
+            for (Double expense : expenses) {
                 System.out.println(expense);
             }
         }
@@ -42,7 +41,8 @@ public class ExpensesManager {
     double findMaxExpenseInCategory(String category) {
         double maxExpense = 0;
         if (expensesByCategories.containsKey(category)) {
-            for (double expense : expensesByCategories.get(category)) {
+            ArrayList<Double> expenses = expensesByCategories.get(category);
+            for (Double expense : expenses) {
                 if (expense > maxExpense) {
                     maxExpense = expense;
                 }
@@ -56,5 +56,40 @@ public class ExpensesManager {
     void removeAllExpenses() {
         expensesByCategories.clear();
         System.out.println("Траты удалены.");
+    }
+
+    double getExpensesSum() {
+        double expensesSum = 0;
+
+        for (ArrayList<Double> expenses : expensesByCategories.values()) {
+            for (double expense : expenses) {
+                expensesSum += expense;
+            }
+        }
+        return expensesSum;
+    }
+
+    void removeCategory(String category) {
+        expensesByCategories.remove(category);
+    }
+
+    String getMaxCategoryName() {
+        double maxCategorySum = 0;
+        String maxCategoryName = "";
+
+        for (String category : expensesByCategories.keySet()) {
+            ArrayList<Double> expenses = expensesByCategories.get(category);
+            double sum = 0;
+
+            for (double expense : expenses) {
+                sum += expense;
+            }
+
+            if (sum > maxCategorySum) {
+                maxCategorySum = sum;
+                maxCategoryName = category;
+            }
+        }
+        return maxCategoryName;
     }
 }
