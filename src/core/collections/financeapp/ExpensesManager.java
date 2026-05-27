@@ -1,65 +1,60 @@
 package core.collections.financeapp;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class ExpensesManager {
-    ArrayList<Expense> expenses;
+    private HashMap<String, ArrayList<Double>> expensesByCategories;
 
     ExpensesManager() {
-        expenses = new ArrayList<>();
+        expensesByCategories = new HashMap<>();
     }
 
-    double saveExpense(double moneyBeforeSalary, double expense) {
+    double saveExpense(double moneyBeforeSalary, double expense, String category) {
         moneyBeforeSalary = moneyBeforeSalary - expense;
-        expenses.add(new Expense(expense));
         System.out.println("Значение сохранено! Ваш текущий баланс в рублях: " +
             moneyBeforeSalary);
+        if (expensesByCategories.containsKey(category)) {
+            ArrayList<Double> listOfExpenses = expensesByCategories.get(category);
+            listOfExpenses.add(expense);
+        } else {
+            ArrayList<Double> listOfExpenses = new ArrayList<>();
+            listOfExpenses.add(expense);
+            expensesByCategories.put(category, listOfExpenses);
+        }
         if (moneyBeforeSalary < 1000) {
             System.out.println("На вашем счету осталось совсем немного. Стоит начать экономить!");
         }
         return moneyBeforeSalary;
     }
 
-    void printAllExpenses() {
-        for (int i = 0; i < expenses.size(); i++) {
-            Expense exp = expenses.get(i);
-            System.out.println(
-                "Трата № " + (i + 1) + ". Потрачено " + exp.getValue() +
-                    " рублей, код транзакции: " + exp.getTransaction());
+
+    void printAllExpensesByCategories() {
+        for (String category : expensesByCategories.keySet()) {
+            System.out.println(category);
+
+            for (double expense : expensesByCategories.get(category)) {
+                System.out.println(expense);
+            }
         }
     }
 
-    double findMaxExpense() {
+    double findMaxExpenseInCategory(String category) {
         double maxExpense = 0;
-        for (Expense exp : expenses) {
-            if (exp.getValue() > maxExpense) {
-                maxExpense = exp.getValue();
+        if (expensesByCategories.containsKey(category)) {
+            for (double expense : expensesByCategories.get(category)) {
+                if (expense > maxExpense) {
+                    maxExpense = expense;
+                }
             }
+        } else {
+            System.out.println("Такой категории пока нет.");
         }
         return maxExpense;
     }
 
     void removeAllExpenses() {
-        expenses.clear();
-        System.out.println("Список трат пуст.");
-    }
-
-    void removeExpense(int transaction) {
-        if (expenses.isEmpty()) {
-            System.out.println("Список трат пуст.");
-            return;
-        }
-
-        for (int i = 0; i < expenses.size(); i++) {
-            Expense exp = expenses.get(i);
-
-            if (exp.getTransaction() == transaction) {
-                expenses.remove(i);
-                System.out.println("Трата удалена!");
-                return;
-            }
-        }
-
-        System.out.println("Такой траты нет.");
+        expensesByCategories.clear();
+        System.out.println("Траты удалены.");
     }
 }
