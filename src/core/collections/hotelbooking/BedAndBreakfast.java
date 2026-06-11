@@ -1,39 +1,38 @@
 package core.collections.hotelbooking;
 
 public class BedAndBreakfast {
-    private int capacity = 10;
-    private boolean full = false;
+  private int capacity = 10;
+  private boolean full = false;
 
-    public void book() {
-        if (!full) {
-            System.out.println("Забронирован ещё один номер!");
-            capacity--;
-            printRooms();
-            if (capacity == 0) {
-                full = true;
-            }
-        } else {
-            System.out.println("Свободных номеров нет!");
-        }
+  public void book() {
+    if (!full) {
+      System.out.println("Забронирован ещё один номер!");
+      capacity--;
+      printRooms();
+      if (capacity == 0) {
+        full = true;
+      }
+    } else {
+      System.out.println("Свободных номеров нет!");
     }
+  }
 
-    private void printRooms() {
-        System.out.println("Свободных номеров - " + capacity);
-    }
+  private void printRooms() {
+    System.out.println("Свободных номеров - " + capacity);
+  }
 
-    public void free() {
-        if (capacity < 10) {
-            capacity++;
-            System.out.println("Освободился номер!");
-            printRooms();
-            full = false;
-        } else {
-            System.out.println("В гостинице только 10 номеров.");
-        }
+  public void free() {
+    if (capacity < 10) {
+      capacity++;
+      System.out.println("Освободился номер!");
+      printRooms();
+      full = false;
+    } else {
+      System.out.println("В гостинице только 10 номеров.");
     }
+  }
 
-    public boolean isFull() {
-        return full;
-    }
+  public boolean isFull() {
+    return full;
+  }
 }
-

@@ -1,43 +1,38 @@
 package core.oop.inheritance.lostandfoundoffice;
 
-class Ball {
-}
+class Ball {}
 
-class Accordion {
-}
+class Accordion {}
 
-class Hat {
-}
+class Hat {}
 
-class Umbrella {
-}
+class Umbrella {}
 
 public class Main {
-    static LostAndFoundOffice lostAndFound = new LostAndFoundOffice();
+  static LostAndFoundOffice lostAndFound = new LostAndFoundOffice();
 
-    public static void main(String[] args) {
-        Ball ball = new Ball();
-        Accordion accordion = new Accordion();
-        Umbrella umbrella = new Umbrella();
-        Hat hat = new Hat();
+  public static void main(String[] args) {
+    Ball ball = new Ball();
+    Accordion accordion = new Accordion();
+    Umbrella umbrella = new Umbrella();
+    Hat hat = new Hat();
 
-        lostAndFound.put(ball);
-        lostAndFound.put(accordion);
-        lostAndFound.put(umbrella);
+    lostAndFound.put(ball);
+    lostAndFound.put(accordion);
+    lostAndFound.put(umbrella);
 
-        checkObject(accordion, "Аккордеон");
-        checkObject(ball, "Мяч");
-        checkObject(null, "Пустая ссылка");
-        checkObject(umbrella, "Зонт");
-        checkObject(hat, "Шляпа");
+    checkObject(accordion, "Аккордеон");
+    checkObject(ball, "Мяч");
+    checkObject(null, "Пустая ссылка");
+    checkObject(umbrella, "Зонт");
+    checkObject(hat, "Шляпа");
+  }
+
+  private static void checkObject(Object object, String description) {
+    if (lostAndFound.check(object)) {
+      System.out.println('\'' + description + "' нашёлся!");
+    } else {
+      System.out.println('\'' + description + "' в бюро находок никто не приносил :(");
     }
-
-    private static void checkObject(Object object, String description) {
-        if (lostAndFound.check(object)) {
-            System.out.println('\'' + description + "' нашёлся!");
-        } else {
-            System.out.println(
-                '\'' + description + "' в бюро находок никто не приносил :(");
-        }
-    }
+  }
 }
