@@ -1,15 +1,15 @@
 package core.oop.interfaces.figure_hierarchy;
 
 public class Circle implements Figure {
-    // Радиус круга
-    private final double r;
+  // Радиус круга
+  private final double r;
 
-    public Circle(double r) {
-        this.r = r;
-    }
+  public Circle(double r) {
+    this.r = r;
+  }
 
-    @Override
-    public double getArea() {
-        return Math.PI * r * r;
-    }
+  @Override
+  public double getArea() {
+    return Math.PI * r * r;
+  }
 }

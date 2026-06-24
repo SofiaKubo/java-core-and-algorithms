@@ -19,3 +19,4 @@ public class Smartphone extends MobilePhone {
     System.out.println("Напишем другу сообщение " + messageText + " по email " + email + ".");
   }
 }
+
